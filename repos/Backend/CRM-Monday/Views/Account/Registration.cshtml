@@ -1,0 +1,83 @@
+﻿@model CRM_Monday.Models.InputModels.UserLogin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+</head>
+<body>
+
+<h4>UserLogin</h4>
+<hr />
+<div>
+    <p>Calendar:</p>
+    @Html.EJS().Calendar("calendar").Render()
+</div>
+<div>
+    <ejs-calendar id="calendar"></ejs-calendar>
+</div>
+<ejs-button id="element" content="Button"></ejs-button>
+<div class="row">
+    <div class="col-md-4">
+        
+        <form asp-action="Registration">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country_Code" class="control-label"></label>
+                @*<input asp-for="Country_Code" class="form-control" />*@
+                <select asp-for="Country_Code">
+                        @*@{
+                            for ()
+                            {
+                                <option>i</option>    
+                            }
+                        }*@
+                    <option>+91</option>
+                    <option>+92</option>
+                    <option>+93</option>
+                    <option>+51</option>
+                </select>
+                <span asp-validation-for="Country_Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
